@@ -55,6 +55,12 @@ public class LinkedList<T> {
         this.size++;
     }
 
+    public void clear(){
+            this.first = null;
+            this.last = null;
+            this.size = this.size - getSize();
+    }
+
     public boolean isEmpty(){
         return this.first == null;
     }
