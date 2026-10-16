@@ -41,8 +41,26 @@ public class LinkedList<T> {
         this.size++;
     }
 
+    public void addNode(Node<T> value) {
+        value.setNext(null);
+        if(!this.isEmpty()){
+            this.last.setNext(value);
+            this.last = value;
+            value.setNext(null);
+            this.size++;
+            return;
+        }
+        this.first = value;
+        this.last = this.first;
+        this.size++;
+    }
+
     public boolean isEmpty(){
         return this.first == null;
+    }
+
+    public Node<T> getFirst(){
+        return this.first;
     }
 
     public int getSize(){
