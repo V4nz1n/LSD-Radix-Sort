@@ -55,6 +55,27 @@ public class LinkedList<T> {
         this.size++;
     }
 
+    public void clear(){
+            this.first = null;
+            this.last = null;
+            this.size = this.size - getSize();
+    }
+
+    public void concat(LinkedList<T> otherList){
+        if(otherList.isEmpty()){
+            return;
+        }
+        if(this.isEmpty()){
+            this.first = otherList.getFirst();
+            this.last = otherList.last;
+            this.size = otherList.getSize();
+            return;
+        }
+        this.last.setNext(otherList.getFirst());
+        this.last = otherList.last;
+        this.size = getSize() + otherList.getSize();
+    }
+
     public boolean isEmpty(){
         return this.first == null;
     }
