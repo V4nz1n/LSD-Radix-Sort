@@ -24,4 +24,21 @@ public class RadixSortLSD {
             System.out.println("bucket[" + i + "] = " + this.buckets[i].getSize());
         }
     }
+
+    public void distributeNodes(LinkedList<Integer> list, int exp){
+        Node<Integer> current = list.getFirst();
+        while(current != null){
+            Node<Integer> varTemp = current.getNext();
+            int digit = ((current.getData() / exp) % 10);
+            buckets[digit].addNode(current);
+            current = varTemp;
+        }
+    }
+
+    public void printBuckets() {
+        for (int i = 0; i < this.buckets.length; i++) {
+            System.out.print("balde " + i + ": ");
+            this.buckets[i].print();
+        }
+    }
 }
