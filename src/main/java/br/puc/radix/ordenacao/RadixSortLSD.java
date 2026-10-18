@@ -4,6 +4,7 @@ import br.puc.radix.lista.LinkedList;
 import br.puc.radix.lista.Node;
 
 public class RadixSortLSD {
+    private LinkedList<Integer>[] buckets;
     public int findMax(LinkedList<Integer> list){
         Node<Integer> current = list.getFirst();
         int max = Integer.MIN_VALUE;
@@ -14,5 +15,13 @@ public class RadixSortLSD {
             current = current.getNext();
         }
         return max;
+    }
+
+    public void createBuckets(){
+        this.buckets = new LinkedList[10];
+        for(int i = 0; i < this.buckets.length; i++){
+            this.buckets[i] = new LinkedList<>();
+            System.out.println("bucket[" + i + "] = " + this.buckets[i].getSize());
+        }
     }
 }
