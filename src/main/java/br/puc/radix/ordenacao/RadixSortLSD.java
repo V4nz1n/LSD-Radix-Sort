@@ -5,10 +5,11 @@ import br.puc.radix.lista.Node;
 
 public class RadixSortLSD {
     private LinkedList<Integer>[] buckets;
-    public int findMax(LinkedList<Integer> list){
+
+    public int findMax(LinkedList<Integer> list) {
         Node<Integer> current = list.getFirst();
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < list.getSize(); i++){
+        for (int i = 0; i < list.getSize(); i++) {
             if (current.getData() > max) {
                 max = current.getData();
             }
@@ -17,31 +18,43 @@ public class RadixSortLSD {
         return max;
     }
 
-    public void createBuckets(){
+    public void createBuckets() {
         this.buckets = new LinkedList[10];
-        for(int i = 0; i < this.buckets.length; i++){
+        for (int i = 0; i < this.buckets.length; i++) {
             this.buckets[i] = new LinkedList<>();
-            System.out.println("bucket[" + i + "] = " + this.buckets[i].getSize());
         }
     }
 
-    public void distributeNodes(LinkedList<Integer> list, int exp){
+    public void distributeNodes(LinkedList<Integer> list, int exp) {
         Node<Integer> current = list.getFirst();
-        while(current != null){
+        while (current != null) {
             Node<Integer> varTemp = current.getNext();
             int digit = ((current.getData() / exp) % 10);
-            buckets[digit].addNode(current);
+            this.buckets[digit].addNode(current);
             current = varTemp;
         }
     }
 
-    public void gatherBuckets(LinkedList<Integer> list){
+    public void gatherBuckets(LinkedList<Integer> list) {
         list.clear();
-        for (int i = 0; i < buckets.length; i++){
-            list.concat(buckets[i]);
+        for (int i = 0; i < this.buckets.length; i++) {
+            list.concat(this.buckets[i]);
         }
     }
 
+    public void bucketCoordination(LinkedList<Integer> list){
+        int exp = 1;
+        if(list.getSize() <= 1){
+            return;
+        }
+        int max = this.findMax(list);
+        while(max / exp > 0){
+            this.createBuckets();
+            this.distributeNodes(list, exp);
+            this.gatherBuckets(list);
+            exp *= 10;
+        }
+    }
 
     public void printBuckets() {
         for (int i = 0; i < this.buckets.length; i++) {
