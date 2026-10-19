@@ -167,8 +167,8 @@ O algoritmo não depende da ordem inicial dos dados, apenas de **n** e de **d**.
 |---|---|
 | `Lucas Vanzin` | Estrutura do projeto, `RadixSortLSD`, `LinkedList` |
 | `Miguel Rodrigues` | `LinkedList`, `Node` |
-| `Arthur` | `Apresentação` |
-| `João Henrique Luz` | `casos de teste e README` |
+| `Arthur Yoshiuki` | `Apresentação` |
+| `João Henrique Luz` | `Main e README` |
 | `Gustavo Freire` | `apresentação` |
 | `Guilherme Carrijo` | `apresentação` |
 
