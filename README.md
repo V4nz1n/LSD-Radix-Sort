@@ -73,8 +73,8 @@ LSD-Radix-Sort/
 |---|---|---|
 | Inserir no início | `addFirst` | O(1) |
 | Inserir no fim | `addLast` | O(1) |
-| Remover por valor | `removeValue` | O(n) |
-| Buscar | `searchValue` | O(n) |
+| Remover por valor | `remove` | O(n) |
+| Buscar | `search` | O(n) |
 | Imprimir | `print` | O(n) |
 | Tamanho | `getSize` | O(1) |
 
