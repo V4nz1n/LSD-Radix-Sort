@@ -35,6 +35,14 @@ public class RadixSortLSD {
         }
     }
 
+    public void gatherBuckets(LinkedList<Integer> list){
+        list.clear();
+        for (int i = 0; i < buckets.length; i++){
+            list.concat(buckets[i]);
+        }
+    }
+
+
     public void printBuckets() {
         for (int i = 0; i < this.buckets.length; i++) {
             System.out.print("balde " + i + ": ");
