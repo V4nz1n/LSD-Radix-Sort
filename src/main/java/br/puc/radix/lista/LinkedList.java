@@ -1,5 +1,7 @@
 package br.puc.radix.lista;
 
+import java.util.Objects;
+
 public class LinkedList<T> {
     private Node<T> first;
     private Node<T> last;
@@ -74,6 +76,42 @@ public class LinkedList<T> {
         this.last.setNext(otherList.getFirst());
         this.last = otherList.last;
         this.size = getSize() + otherList.getSize();
+    }
+
+    public int search(T value) {
+        Node<T> current = this.first;
+        int index = 0;
+        while (current != null) {
+            if (Objects.equals(current.getData(), value)) {
+                return index;
+            }
+            current = current.getNext();
+            index++;
+        }
+        return -1;
+    }
+
+    public boolean remove(T value) {
+        Node<T> previous = null;
+        Node<T> current = this.first;
+        while (current != null) {
+            if (Objects.equals(current.getData(), value)) {
+                if (previous == null) {
+                    this.first = current.getNext();
+                } else {
+                    previous.setNext(current.getNext());
+                }
+                if (current == this.last) {
+                    this.last = previous;
+                }
+                current.setNext(null);
+                this.size--;
+                return true;
+            }
+            previous = current;
+            current = current.getNext();
+        }
+        return false;
     }
 
     public boolean isEmpty(){
